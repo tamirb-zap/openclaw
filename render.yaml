@@ -16,3 +16,5 @@ services:
         generateValue: true
       - key: OPENROUTER_API_KEY
         sync: false
+      - key: OPENCLAW_CONFIG_PATH
+        value: /app/deploy/render-openclaw.json
