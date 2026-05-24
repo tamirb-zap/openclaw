@@ -10,5 +10,49 @@
       ],
       "dangerouslyDisableDeviceAuth": true
     }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "openrouter": {
+        "baseUrl": "https://openrouter.ai/api/v1",
+        "apiKey": "${OPENROUTER_API_KEY}",
+        "api": "openai-completions",
+        "auth": "api-key",
+        "contextWindow": 128000,
+        "maxTokens": 4096,
+        "requestTimeout": 60,
+        "models": [
+          {
+            "id": "anthropic/claude-3.5-sonnet",
+            "name": "Claude 3.5 Sonnet (OpenRouter)",
+            "contextWindow": 200000
+          },
+          {
+            "id": "openai/gpt-4o-mini",
+            "name": "GPT-4o mini (OpenRouter)",
+            "contextWindow": 128000
+          },
+          {
+            "id": "meta-llama/llama-3.3-70b-instruct:free",
+            "name": "Llama 3.3 70B free (OpenRouter)",
+            "contextWindow": 131072
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "models": [
+        "openrouter/*"
+      ],
+      "model": {
+        "primary": "openrouter/anthropic/claude-3.5-sonnet",
+        "fallbacks": [
+          "openrouter/openai/gpt-4o-mini"
+        ]
+      }
+    }
   }
 }
